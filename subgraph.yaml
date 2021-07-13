@@ -1,0 +1,48 @@
+specVersion: 0.0.2
+description: Apeseasons tournaments
+repository: https://github.com/JeppeQ/apeseasons-graph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: tournamentFactory
+    network: goerli
+    source:
+      address: "0x83ef20482d2e99e1cadcde394a47a07fe8ad19d3"
+      startBlock: 5099208
+      abi: tournamentFactory
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/mappings/factory.ts
+      entities:
+        - Tournament
+      abis:
+        - name: tournamentFactory
+          file: ./abis/tournamentFactory.json
+      eventHandlers:
+        - event: CreateTournament(uint256,uint256,uint256,address,address)
+          handler: handleCreateTournament
+templates:
+  - name: Tournament
+    kind: ethereum/contract
+    network: goerli
+    source:
+      abi: tournament
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/mappings/tournament.ts
+      entities:
+        - Player
+        - TokenBalance
+      abis:
+        - name: tournament
+          file: ./abis/tournament.json
+      eventHandlers:
+        - event: Deploy(uint256,uint256,uint256)
+          handler: handleDeploy
+        - event: BuyTicket(address)
+          handler: handleBuyTicket

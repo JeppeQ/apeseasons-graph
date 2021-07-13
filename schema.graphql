@@ -1,0 +1,24 @@
+type Tournament @entity {
+  id: ID!
+  startBlock: BigInt! # uint256
+  endBlock: BigInt! # uint256
+  ticketPrice: BigInt! # uint256
+  ticketToken: Bytes!
+  playerCount: Int!
+  players: [Player!] @derivedFrom(field:"tournament")
+  finalized: Boolean!
+}
+
+type Player @entity {
+  id: ID!
+  tournament: Tournament!
+  tokensBalances: [TokenBalance]! @derivedFrom(field:"player")
+  rewarded: Boolean!
+}
+
+type TokenBalance @entity {
+  id: ID!
+  player: Player!
+  token: Bytes!
+  amount: BigInt! # uint256
+}
