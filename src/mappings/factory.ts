@@ -6,6 +6,7 @@ export function handleCreateTournament(event: CreateTournament): void {
   let context = new DataSourceContext()
 
   context.setBytes('ticketToken', event.params._ticketToken)
+  context.setBytes('address', event.params.tournamentAddress)
 
   Tournament.createWithContext(event.params.tournamentAddress, context)
 }

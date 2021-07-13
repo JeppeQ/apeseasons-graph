@@ -4,8 +4,10 @@ import { Tournament, Player, TokenBalance } from "../../generated/schema"
 
 export function handleDeploy(event: Deploy): void {
   let context = dataSource.context();
-  let entity = new Tournament(event.transaction.from.toHex())
+  let entity = new Tournament(context.getBytes('address').toHex())
 
+  entity.start = event.block.timestamp.plus(event.params.startBlock.minus(event.block.number).times(new BigInt(15)))
+  entity.end = event.block.timestamp.plus(event.params.endBlock.minus(event.block.number).times(new BigInt(15)))
   entity.startBlock = event.params.startBlock
   entity.endBlock = event.params.endBlock
   entity.ticketPrice = event.params.ticketPrice

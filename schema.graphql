@@ -1,5 +1,7 @@
 type Tournament @entity {
   id: ID!
+  start: BigInt! # uint256
+  end: BigInt! # uint256
   startBlock: BigInt! # uint256
   endBlock: BigInt! # uint256
   ticketPrice: BigInt! # uint256
