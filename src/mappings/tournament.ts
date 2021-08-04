@@ -67,6 +67,7 @@ export function handleWithdrawWinnings(event: WithdrawWinnings): void {
   let player = event.transaction.from.toHex()
 
   let playerRewardEntity = new PlayerReward(tourney + player)
+  playerRewardEntity.amount = event.params.winnings
   playerRewardEntity.eventBlock = event.block.number
   playerRewardEntity.player = player
   playerRewardEntity.tournament = tourney

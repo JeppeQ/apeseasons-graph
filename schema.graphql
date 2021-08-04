@@ -23,6 +23,7 @@ type Player @entity {
 
 type PlayerReward @entity {
   id: ID!
+  amount: BigInt!
   eventBlock: BigInt! # uint256 
   player: Player!
   tournament: Tournament!

@@ -40,6 +40,16 @@
         "internalType": "address",
         "name": "_tokenWhitelist",
         "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_rewardDistributor",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_prizeStructureAddress",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -56,6 +66,31 @@
       }
     ],
     "name": "BuyTicket",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "player",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "rewardAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "ClaimRewards",
     "type": "event"
   },
   {
@@ -134,36 +169,16 @@
         "internalType": "address",
         "name": "player",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "winnings",
+        "type": "uint256"
       }
     ],
     "name": "WithdrawWinnings",
     "type": "event"
-  },
-  {
-    "inputs": [],
-    "name": "APE_TAX",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "DECIMALS",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
   },
   {
     "inputs": [],
@@ -206,38 +221,19 @@
   },
   {
     "inputs": [],
+    "name": "claimRewards",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "endBlock",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "gameIsLiquidated",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "gameIsScored",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -283,6 +279,25 @@
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "_liquidationAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "getPrizePool",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "",
         "type": "address"
@@ -300,14 +315,21 @@
     "type": "function"
   },
   {
-    "inputs": [
+    "inputs": [],
+    "name": "isLiquidated",
+    "outputs": [
       {
-        "internalType": "address",
+        "internalType": "bool",
         "name": "",
-        "type": "address"
+        "type": "bool"
       }
     ],
-    "name": "hasTicket",
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "isScored",
     "outputs": [
       {
         "internalType": "bool",
@@ -334,19 +356,6 @@
     "name": "liquidate",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "liquidationAmount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -408,14 +417,56 @@
   {
     "inputs": [
       {
-        "internalType": "address[]",
-        "name": "_sortedPlayers",
-        "type": "address[]"
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       }
     ],
-    "name": "scorePlayers",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "playerStates",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "hasTicket",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "hasWithdrawn",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "hasClaimed",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "prizeStructure",
+    "outputs": [
+      {
+        "internalType": "contract IPrizeStructure",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "rewardDistributor",
+    "outputs": [
+      {
+        "internalType": "contract RewardDistributor",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -558,7 +609,13 @@
       }
     ],
     "name": "withdrawWinnings",
-    "outputs": [],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   }

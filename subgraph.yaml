@@ -22,7 +22,7 @@ dataSources:
         - name: tournamentFactory
           file: ./abis/tournamentFactory.json
       eventHandlers:
-        - event: CreateTournament(uint256,uint256,uint256,address,address)
+        - event: CreateTournament(uint256,uint256,uint256,address,address,string)
           handler: handleCreateTournament
 templates:
   - name: Tournament
@@ -50,5 +50,5 @@ templates:
           handler: handleBuyTicket
         - event: Trade(address,address,address,uint256,uint256)
           handler: handleTrade
-        - event: WithdrawWinnings(address)
+        - event: WithdrawWinnings(address,uint256)
           handler: handleWithdrawWinnings
