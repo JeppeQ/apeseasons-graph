@@ -38,6 +38,8 @@ templates:
       entities:
         - Player
         - TokenBalance
+        - Trade
+        - PlayerReward
       abis:
         - name: tournament
           file: ./abis/tournament.json
@@ -46,3 +48,7 @@ templates:
           handler: handleDeploy
         - event: BuyTicket(address)
           handler: handleBuyTicket
+        - event: Trade(address,address,address,uint256,uint256)
+          handler: handleTrade
+        - event: WithdrawWinnings(address)
+          handler: handleWithdrawWinnings

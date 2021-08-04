@@ -1,5 +1,6 @@
 type Tournament @entity {
   id: ID!
+  eventBlock: BigInt! # uint256 
   start: BigInt! # uint256
   end: BigInt! # uint256
   startBlock: BigInt! # uint256
@@ -13,9 +14,18 @@ type Tournament @entity {
 
 type Player @entity {
   id: ID!
+  address: Bytes!
+  eventBlock: BigInt! # uint256
+  rewarded: Boolean!
   tournament: Tournament!
   tokensBalances: [TokenBalance]! @derivedFrom(field:"player")
-  rewarded: Boolean!
+}
+
+type PlayerReward @entity {
+  id: ID!
+  eventBlock: BigInt! # uint256 
+  player: Player!
+  tournament: Tournament!
 }
 
 type TokenBalance @entity {
@@ -23,4 +33,16 @@ type TokenBalance @entity {
   player: Player!
   token: Bytes!
   amount: BigInt! # uint256
+}
+
+type Trade @entity {
+  id: ID!
+  player: Player!
+  tournament: Tournament!
+  eventBlock: BigInt! # uint256
+  from: Bytes!
+  to: Bytes!
+  fromAmount: BigInt!
+  toAmount: BigInt!
+  time: BigInt! # uint256
 }
