@@ -1,5 +1,6 @@
 type Tournament @entity {
   id: ID!
+  name: String!
   eventBlock: BigInt! # uint256 
   start: BigInt! # uint256
   end: BigInt! # uint256

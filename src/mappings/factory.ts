@@ -7,6 +7,7 @@ export function handleCreateTournament(event: CreateTournament): void {
 
   context.setBytes('ticketToken', event.params._ticketToken)
   context.setBytes('address', event.params.tournamentAddress)
+  context.setString('name', event.params.name)
 
   Tournament.createWithContext(event.params.tournamentAddress, context)
 }

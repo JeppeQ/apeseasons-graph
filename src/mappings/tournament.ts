@@ -12,6 +12,7 @@ export function handleDeploy(event: Deploy): void {
   let context = dataSource.context();
   let entity = new Tournament(context.getBytes('address').toHex())
 
+  entity.name = context.getString('name')
   entity.eventBlock = event.block.number
   entity.start = event.block.timestamp.plus(event.params.startBlock.minus(event.block.number).times(BigInt.fromI32(15))).times(BigInt.fromI32(1000))
   entity.end = event.block.timestamp.plus(event.params.endBlock.minus(event.block.number).times(BigInt.fromI32(15))).times(BigInt.fromI32(1000))
