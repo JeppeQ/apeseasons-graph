@@ -17,6 +17,11 @@
         "type": "uint256"
       },
       {
+        "internalType": "uint256",
+        "name": "_apeFee",
+        "type": "uint256"
+      },
+      {
         "internalType": "address",
         "name": "_ticketTokenAddress",
         "type": "address"
@@ -28,7 +33,7 @@
       },
       {
         "internalType": "address",
-        "name": "_wethAddress",
+        "name": "_tradeTokenAddress",
         "type": "address"
       },
       {
@@ -179,6 +184,19 @@
     ],
     "name": "WithdrawWinnings",
     "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "apeFee",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
     "inputs": [],
@@ -485,6 +503,24 @@
   {
     "inputs": [
       {
+        "internalType": "address[]",
+        "name": "_sortedPlayers",
+        "type": "address[]"
+      },
+      {
+        "internalType": "address[][]",
+        "name": "_playerTokens",
+        "type": "address[][]"
+      }
+    ],
+    "name": "scorePlayers",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
@@ -602,7 +638,7 @@
   },
   {
     "inputs": [],
-    "name": "wethAddress",
+    "name": "tradeTokenAddress",
     "outputs": [
       {
         "internalType": "address",

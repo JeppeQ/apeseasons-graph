@@ -3,11 +3,6 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_wethAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
         "name": "_sushiRouterAddress",
         "type": "address"
       },
@@ -45,6 +40,12 @@
         "indexed": false,
         "internalType": "address",
         "name": "_ticketToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "_tradeToken",
         "type": "address"
       },
       {
@@ -105,19 +106,6 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "newWethAddress",
-        "type": "address"
-      }
-    ],
-    "name": "changeWethAddress",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "uint256",
         "name": "_startBlock",
         "type": "uint256"
@@ -133,6 +121,11 @@
         "type": "uint256"
       },
       {
+        "internalType": "uint256",
+        "name": "_apeFee",
+        "type": "uint256"
+      },
+      {
         "internalType": "address",
         "name": "_ticketToken",
         "type": "address"
@@ -140,6 +133,11 @@
       {
         "internalType": "address",
         "name": "_gameMaster",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_tradeTokenAddress",
         "type": "address"
       },
       {
@@ -211,19 +209,6 @@
   {
     "inputs": [],
     "name": "tokenWhitelist",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "wethAddress",
     "outputs": [
       {
         "internalType": "address",
