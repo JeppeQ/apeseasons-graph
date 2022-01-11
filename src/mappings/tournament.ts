@@ -14,8 +14,8 @@ export function handleDeploy(event: Deploy): void {
 
   entity.name = context.getString('name')
   entity.eventBlock = event.block.number
-  entity.start = event.block.timestamp.plus(event.params.startBlock.minus(event.block.number).times(BigInt.fromI32(15))).times(BigInt.fromI32(1000))
-  entity.end = event.block.timestamp.plus(event.params.endBlock.minus(event.block.number).times(BigInt.fromI32(15))).times(BigInt.fromI32(1000))
+  entity.start = (event.block.timestamp.times(BigInt.fromI32(1000))).plus(event.params.startBlock.minus(event.block.number).times(BigInt.fromI32(2100)))
+  entity.end = (event.block.timestamp.times(BigInt.fromI32(1000))).plus(event.params.endBlock.minus(event.block.number).times(BigInt.fromI32(2100)))
   entity.startBlock = event.params.startBlock
   entity.endBlock = event.params.endBlock
   entity.ticketPrice = event.params.ticketPrice
