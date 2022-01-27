@@ -79,6 +79,7 @@ export function handleGameFinalized(event: GameFinalized): void {
   let tourney = event.transaction.to.toHex()
 
   let tourneyEntity = Tournament.load(tourney)
+  tourneyEntity.eventBlock = event.block.number
   tourneyEntity.finalized = true
   tourneyEntity.save()
 }
