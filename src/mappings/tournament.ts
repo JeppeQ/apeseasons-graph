@@ -1,5 +1,5 @@
 import { BigInt, dataSource } from "@graphprotocol/graph-ts"
-import { Deploy, BuyTicket, Trade, WithdrawWinnings } from "../../generated/templates/Tournament/tournament"
+import { Deploy, BuyTicket, Trade, WithdrawWinnings, GameFinalized } from "../../generated/templates/Tournament/tournament"
 import {
   Tournament,
   Player,
@@ -73,4 +73,12 @@ export function handleWithdrawWinnings(event: WithdrawWinnings): void {
   playerRewardEntity.player = player
   playerRewardEntity.tournament = tourney
   playerRewardEntity.save()
+}
+
+export function handleGameFinalized(event: GameFinalized): void {
+  let tourney = event.transaction.to.toHex()
+
+  let tourneyEntity = Tournament.load(tourney)
+  tourneyEntity.finalized = true
+  tourneyEntity.save()
 }

@@ -52,3 +52,5 @@ templates:
           handler: handleTrade
         - event: WithdrawWinnings(address,uint256)
           handler: handleWithdrawWinnings
+        - event: GameFinalized()
+          handler: handleGameFinalized
