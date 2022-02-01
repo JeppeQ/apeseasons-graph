@@ -8,7 +8,7 @@ dataSources:
     name: tournamentFactory
     network: matic
     source:
-      address: "0x210c7cb41ad3366f06C7Fc40CdFaeB0C18e6Cb38"
+      address: "0x026e8caB7C421d755617167791C115521bFdD500"
       abi: tournamentFactory
       startBlock: 22213000
     mapping:
