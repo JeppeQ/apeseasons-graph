@@ -10,7 +10,7 @@ dataSources:
     source:
       address: "0x501E9051c0D7c450dEA4Dd43Ea4BcBcdc7c414e2"
       abi: tournamentFactory
-      startBlock: 22213000
+      startBlock: 24420950
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
