@@ -10,6 +10,11 @@
         "internalType": "address",
         "name": "_tokenWhitelist",
         "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_rewardDistributor",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -21,31 +26,37 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_startBlock",
+        "name": "startBlock",
         "type": "uint256"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_endBlock",
+        "name": "endBlock",
         "type": "uint256"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_ticketPrice",
+        "name": "ticketPrice",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "rewardAmount",
         "type": "uint256"
       },
       {
         "indexed": false,
         "internalType": "address",
-        "name": "_ticketToken",
+        "name": "ticketToken",
         "type": "address"
       },
       {
         "indexed": false,
         "internalType": "address",
-        "name": "_tradeToken",
+        "name": "rewardToken",
         "type": "address"
       },
       {
@@ -73,19 +84,6 @@
       }
     ],
     "name": "changeOwner",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bool",
-        "name": "newPublicCanCreate",
-        "type": "bool"
-      }
-    ],
-    "name": "changePublicCanCreate",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -126,13 +124,13 @@
         "type": "uint256"
       },
       {
-        "internalType": "address",
-        "name": "_ticketToken",
-        "type": "address"
+        "internalType": "uint256",
+        "name": "_rewardAmount",
+        "type": "uint256"
       },
       {
         "internalType": "address",
-        "name": "_gameMaster",
+        "name": "_ticketToken",
         "type": "address"
       },
       {
@@ -142,7 +140,7 @@
       },
       {
         "internalType": "address",
-        "name": "_rewardTokenDistributor",
+        "name": "_rewardToken",
         "type": "address"
       },
       {
@@ -169,6 +167,19 @@
   },
   {
     "inputs": [],
+    "name": "gameMaster",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "owner",
     "outputs": [
       {
@@ -182,12 +193,12 @@
   },
   {
     "inputs": [],
-    "name": "publicCanCreate",
+    "name": "rewardDistributor",
     "outputs": [
       {
-        "internalType": "bool",
+        "internalType": "address",
         "name": "",
-        "type": "bool"
+        "type": "address"
       }
     ],
     "stateMutability": "view",

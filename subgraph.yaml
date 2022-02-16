@@ -8,9 +8,9 @@ dataSources:
     name: tournamentFactory
     network: matic
     source:
-      address: "0xAfc76F6Dfa185b457eC8bc6ED7FBe45AE214B62c"
+      address: "0xFD689b9a75d348a054f16F028e91c73643327034"
       abi: tournamentFactory
-      startBlock: 24420950
+      startBlock: 25009300
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -22,7 +22,7 @@ dataSources:
         - name: tournamentFactory
           file: ./abis/tournamentFactory.json
       eventHandlers:
-        - event: CreateTournament(uint256,uint256,uint256,address,address,address,string)
+        - event: CreateTournament(uint256,uint256,uint256,uint256,address,address,address,string)
           handler: handleCreateTournament
 templates:
   - name: Tournament
