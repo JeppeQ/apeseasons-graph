@@ -8,9 +8,9 @@ dataSources:
     name: tournamentFactory
     network: matic
     source:
-      address: "0x519F6D689F623d11D72e4105Be73740aA6dAc1Ac"
+      address: "0x6b0BBDf5bABF7B005276dEb926739A187D5b7a68"
       abi: tournamentFactory
-      startBlock: 25009300
+      startBlock: 25080240
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
